@@ -18,7 +18,14 @@ var UserApp = {
   Views: {},
   Controllers: {},
   init: function() {
-    new App.Controllers.Users();
-    Backbone.history.start();
+    new UserApp.Controllers.Users();
+  }
+};
+var JokeApp = {
+  Views: {},
+  Controllers: {},
+  Collections: {},
+  init: function() {
+    new JokeApp.Controllers.Jokes();
   }
 };

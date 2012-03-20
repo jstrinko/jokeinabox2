@@ -1,9 +1,7 @@
-var Users = Backbone.Model.extend(
-  {
-    url: function() {
-      var base = 'users';
-      if (this.isNew()) return base;
-      return base + (base.charAt(base.length - 1) == '/' ? '' : '/') - this.id;
-    }
+var Users = Backbone.Model.extend({
+  url: function() {
+    var base = 'users';
+    if (this.isNew()) return base;
+    return base + (base.charAt(base.length - 1) == '/' ? '' : '/') - this.id;
   }
-);
+});

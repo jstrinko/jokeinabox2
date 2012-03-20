@@ -1,5 +1,3 @@
 Jokeinabox2::Application.routes.draw do
-    root :controller => 'home'
-    resources :users
-    resources :jokes
+  root :to => "home#index"
 end
