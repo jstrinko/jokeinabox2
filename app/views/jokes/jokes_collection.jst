@@ -1,0 +1,19 @@
+<% if(collection.models.length > 0) { %>
+  <h3><a href='#new'>Create New</a></h3><ul>
+    <% collection.each(function(item) { %>
+      <li id='joke_<%= item.id %>'>
+	<div class='votes'>
+	  <div class=upvotes>
+	    <a href='#jokes/upvote/<%= item.id %>'><%= item.upvotes %></a>
+	  </div>
+	  <div class=downvotes>
+	    <a href='#jokes/downvote/<%= item.id %>'><%= item.downvotes %></a>
+	  </div>
+	</div>
+	<%= item.escape('joke') %>
+      </li>
+    <% }); %>
+  </ul>
+<% } else { %>
+  <h3>No Jokes, WTF! <a href='#new'>Create one</a></h3>
+<% } %>
