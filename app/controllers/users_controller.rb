@@ -5,12 +5,15 @@ class UsersController < ApplicationController
     render :json => Users.find(params[:id])
   end
   def create
-    user = User.create! params
-    render :json => user
+    user = User.create!(username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation], email: params[:email])
+    if user
+      sign_in user
+      render :json => user
+    end
   end
   def update
     user = Users.find(params[:id])
-    user.update_attributes! params
+    user.update_attributes!(username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation], email: params[:email])
     render :json => user
   end
 end

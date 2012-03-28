@@ -1,4 +1,4 @@
-App.Views.Users.Edit = Backbone.View.extend({
+App.Views.Jokes.Edit = Backbone.View.extend({
   events: {
     "submit form": "save"
   },
@@ -10,17 +10,19 @@ App.Views.Users.Edit = Backbone.View.extend({
   save: function() {
     var msg = this.model.isNew() ? 'Successfully Created!' : 'Saved!';
     this.model.save(
-      { 
-	username: this.$('[name=username]').val(),
-	password: this.$('[name=password]').val(),
-	password_confirmation: this.$('[name=password_confirmation]').val(),
-	email: this.$('[name=email]').val()
-      },
-      {
+      { joke: this.$('[name=joke]').val() }, 
+      {	
 	success: function(model, resp) {
-	  App.user = model;
-	  new App.Views.Sessions.HeaderView();
-	  new App.Views.Users.Welcome();
+	  new App.Views.Notice({ message: msg });
+	  var jokes = new App.Collections.Jokes();
+	  jokes.fetch({
+	    success: function() {
+	      window.location.href = '#';
+	    },
+	    error: function() {
+	      new Error({ message: 'Error creating joke.' });
+	    }
+	  });
 	},
 	error: function() {
 	  new App.Views.Error();
@@ -30,9 +32,9 @@ App.Views.Users.Edit = Backbone.View.extend({
     return false;
   },
   render: function() {
-    $(this.el).html(JST['users/edit']({ model: this.model }));
+    $(this.el).html(JST['jokes/edit']({ model: this.model }));
     $('#app').html(this.el);
-    this.$('[name=username]').val(this.model.get('username'));
+    this.$('[name=joke]').val(this.model.get('joke'));
     this.delegateEvents();
   }
 });

@@ -6,10 +6,12 @@
     <title>Jokeinabox</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
+    <%= include_javascripts :app %>
+    <%= csrf_meta_tag %>
   </head>
   <body>
     <div id='header'></div>
+    <div id='notice'></div>
     <div id='app'></div>
     <%= yield %>
   </body>

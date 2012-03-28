@@ -1,4 +1,4 @@
-var Users = Backbone.Model.extend({
+var User = Backbone.Model.extend({
   url: function() {
     var base = 'users';
     if (this.isNew()) return base;

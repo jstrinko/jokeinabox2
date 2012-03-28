@@ -1,4 +1,4 @@
-UserApp.Views.Users.View = Backbone.View.extend(
+App.Views.View = Backbone.View.extend(
   {
     initialize: function() {
       this.user = this.options.user;

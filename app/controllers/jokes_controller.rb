@@ -6,12 +6,12 @@ class JokesController < ApplicationController
     render :json => Joke.find(params[:id])
   end
   def create
-    joke = Joke.create! params
+    joke = Joke.create! :joke => params[:joke]
     render :json => joke
   end
   def update
     joke = Joke.find(params[:id])
-    document.update_attributes! params
+    joke.update_attributes! :joke => params[:joke] 
     render :json => joke
   end
 end
