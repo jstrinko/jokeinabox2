@@ -1,13 +1,159 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require_tree .
-*/
+body {
+  font-family: sans-serif, arial;
+  padding: 0;
+  margin: 0;
+}
+ul.jokes {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li.joke_row {
+  padding-bottom: 10px;
+}
+div#all {
+  margin: 0 auto;
+  width: 800px;
+  padding: 0;
+}
+div#app {
+  padding: 5px;
+  border: 1px solid #ccc;
+  background-color: #f6f6f6;
+  border-radius: 5px;
+  clear: both;
+}
+a:link, a:visited, a:hover {
+  color: #92B901;
+  text-decoration: none;
+}
+div#header {
+  float: right;
+  text-align: right;
+  padding: 10px;
+}
+div.votes {
+  font-weight: bold;
+  float: left;
+  width: 40px;
+}
+div.upvote, div.downvote, div.upvoted, div.downvoted, div.noupvote, div.nodownvote {
+  text-align: center;
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+}
+div.upvote, div.downvote {
+  cursor: pointer;
+}
+div.upvote {
+  background-image: url('/assets/arrow_up_blue.png');
+}
+div.upvoted {
+  background-image: url('/assets/arrow_up_green.png');
+}
+div.noupvote {
+  background-image: url('/assets/arrow_up_gray.png');
+}
+div.downvote {
+  background-image: url('/assets/arrow_down_blue.png');
+}
+div.downvoted {
+  background-image: url('/assets/arrow_down_red.png');
+}
+div.nodownvote {
+  background-image: url('/assets/arrow_down_gray.png');
+}
+div.total_votes {
+  text-align: center;
+}
+div.author {
+  float: right;
+  font-size: .8em;
+  color: #666;
+}
+div.joke {
+  width: 770px
+}
+h1 {
+  font-size: 1.2em;
+}
+div.popup {
+  display: none;
+  position: fixed;
+  background: #fff;
+  border: 2px solid #cecece;
+  z-index: 200;
+  padding: 10px;
+  padding-top: 20px;
+  border-radius: 5px;
+}
+.popup_close {
+  font-size: 14px;
+  line-height: 14px;
+  right: 6px;
+  top: 4px;
+  position: absolute;
+  color: #666;
+  font-weight: bold;
+  display: block;
+  cursor: pointer;
+}
+#popup_background {
+  display: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 100;
+}
+input[type='button'], button {
+  color: #999;
+  border: 2px solid #999;
+  border-radius: 3px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 3px;
+}
+input[type='button']:hover, button:hover {
+  background: #f4f4f4;
+}
+span.pair {
+  clear: both;
+  display: block
+}
+input[type='text'], input[type='password'] {
+  border: 2px solid #999;
+  border-radius: 3px;
+}
+label {
+  text-align: left;
+  color: #999;
+  font-size: 14px;
+  font-weight: bold;
+}
+textarea {
+  width: 780px;
+  min-height: 250px;
+}
+div#signup_form label {
+  width: 100px;
+  display: inline-block;
+  text-align: right;
+}
+div#joke_links {
+  padding: 10px;
+  font-weight: bold;
+}
+div#joke_links a {
+  padding: 2px;
+}
+div#joke_links a.selected {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 3px;
+}

@@ -1,5 +1,5 @@
 <form>
-  <label for='joke'>Joke</label>
+  <label for='joke'>Joke</label><br>
   <textarea name='joke'><%= model.get('joke') %></textarea>
-  <button><%= model.isNew() ? 'Create' : 'Save' %></button>
+  <center><button><%= model.isNew() ? 'Create' : 'Save' %></button></center>
 </form>

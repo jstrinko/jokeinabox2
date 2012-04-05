@@ -1,7 +1,15 @@
-<form>
-  <label for='signin_username'>Username</label>
-  <input name='signin_username' type='text' />
-  <label for='signin_password'>Password</label>
-  <input type='password' name='signin_password' />
-  <button>Sign in</button> | <a href='#users/new'>Sign up</a>
-</form>
+<div id='signin_popup' class='popup'>
+  <a class='popup_close' onmousedown='hide_signin_popup(); return false;'>x</a>
+  <form>
+    <span class='pair'>
+      <label for='signin_username'>Username:</label>
+      <input name='signin_username' type='text' />
+    </span>
+    <span class='pair'>
+      <label for='signin_password'>Password:</label>
+      <input type='password' name='signin_password' />
+    </span>
+    <center><button>Sign in</button></center>
+  </form>
+</div>
+<a href='#users/signin' onmousedown='show_signin_popup(); return false;'>Sign in</a> &middot; <a href='#users/new'>Sign up</a> &middot; <a href='#'>Home</a>

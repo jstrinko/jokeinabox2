@@ -3,9 +3,10 @@ App.Views.Sessions.Signout = Backbone.View.extend({
     this.signout();
   },
   signout: function() {
-    this.model.destroy();
-    App.user = {};
-    $(this.el).html(JST['sessions/signout']());
+    Backbone.sync('delete', new Session({ id: 1 }));
+    App.user = null;
+    $(this.el).html("<div class='signout'>You are now signed out</div>");
     $('#app').html(this.el);
+    new App.Views.Sessions.HeaderSignin({ model: new Session() });
   }
 });

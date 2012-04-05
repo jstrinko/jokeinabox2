@@ -10,9 +10,12 @@
     <%= csrf_meta_tag %>
   </head>
   <body>
-    <div id='header'></div>
-    <div id='notice'></div>
-    <div id='app'></div>
-    <%= yield %>
+    <div id='all'>
+      <div id='header'></div>
+      <div id='notice'></div>
+      <div id='app'></div>
+      <%= yield %>
+    </div>
+    <div id='popup_background'></div>
   </body>
 </html>

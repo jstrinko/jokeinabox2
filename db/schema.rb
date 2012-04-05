@@ -14,12 +14,12 @@
 ActiveRecord::Schema.define(:version => 1332428683) do
 
   create_table "jokes", :force => true do |t|
-    t.integer  "upvotes"
-    t.integer  "downvotes"
+    t.integer  "upvotes",      :default => 0
+    t.integer  "downvotes",    :default => 0
     t.string   "joke"
-    t.integer  "posting_user"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -32,5 +32,16 @@ ActiveRecord::Schema.define(:version => 1332428683) do
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+
+  create_table "votes", :force => true do |t|
+    t.integer  "joke_id"
+    t.integer  "user_id"
+    t.boolean  "updown"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "votes", ["joke_id"], :name => "index_votes_on_joke_id"
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end

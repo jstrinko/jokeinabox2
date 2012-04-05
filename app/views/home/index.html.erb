@@ -4,3 +4,8 @@
     Backbone.history.start();
   });
 </script>
+<% if signed_in? %>
+  <script>
+    App.user = new User(<%=raw current_user.to_json %>);
+  </script>
+<% end %>

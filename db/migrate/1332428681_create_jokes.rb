@@ -4,7 +4,7 @@ class CreateJokes < ActiveRecord::Migration
       t.integer :upvotes
       t.integer :downvotes
       t.string :joke
-      t.integer :posting_user
+      t.integer :user_id
       t.timestamps
     end
   end

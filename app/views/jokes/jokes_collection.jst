@@ -1,16 +1,40 @@
 <% if(collection.models.length > 0) { %>
-  <h3><a href='#jokes/new'>Create New</a></h3><ul>
+  <div id='joke_links'>
+    <a id='joke_link_top' href='#'>Top</a> &middot;
+    <a id='joke_link_recent' href='#jokes_by/recent'>Recent</a>
+    <% if (App.user) { %>
+      &middot; 
+      <a id='joke_link_mine' href='#jokes_by/user/<%= App.user.id %>'>Mine</a> &middot;
+      <a id='joke_link_new' href='#jokes/new'>Create New</a>
+    <% } %>
+  </div>
+  <ul class=jokes>
     <% collection.each(function(item) { %>
-      <li id='joke_<%= item.id %>'>
-	<div class='votes'>
-	  <div class=upvotes>
-	    <a href='#jokes/upvote/<%= item.id %>'><%= item.upvotes %></a>
+      <li class='joke_row' id='joke_<%= item.get('id') %>'>
+	<% if (App.user && item.get('user_id') != App.user.get('id')) { %>
+	  <div class='votes'>
+	    <div class=upvote<%= App.user.has_voted('up', item.get('id')) ? 'd' : '' %> id='up_<%= item.get('id') %>'></div>
+	    <div class=total_votes id='votes_<%= item.get('id') %>'>
+	      <%= item.total_votes() %>
+	    </div>
+	    <div class=downvote<%= App.user.has_voted('down', item.get('id')) ? 'd' : '' %> id='down_<%= item.get('id') %>'></div>
 	  </div>
-	  <div class=downvotes>
-	    <a href='#jokes/downvote/<%= item.id %>'><%= item.downvotes %></a>
+	<% } else { %>
+	  <div class='votes'>
+	    <div class=noupvote id='up_<%= item.get('id') %>'></div>
+	    <div class=total_votes>
+	      <%= item.total_votes() %>
+	    </div>
+	    <div class=nodownvote id='down_<%= item.get('id') %>'></div>
+	  </div> 
+	<% } %>
+	<div class='joke'>
+	  <div class='author'>
+	    Created by <span class=username><a href='#jokes_by/user/<%= item.get('user_id') %>'><%= App.user && item.get('user_id') == App.user.get('id') ? 'you' : App.user_cache[item.get('user_id')].get('username') %></a></span> on <span class=datetime><%= item.get('created_at') %></span>
 	  </div>
+	  <%= item.get('joke') %>
 	</div>
-	<%= item.escape('joke') %>
+	<br style='clear: both;'/>
       </li>
     <% }); %>
   </ul>
